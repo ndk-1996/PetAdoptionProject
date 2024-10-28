@@ -1,0 +1,65 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Add vet</title>
+    {% endif %}
+    <link rel = 'stylesheet' href = "{{ url_for('static', filename = 'allstyle.css') }}">
+  </head>
+  <body class = "formlogin" >
+    <ul class = "ulist">
+      <li><a class = "nav-bar" href = "{{ url_for('home') }}">Home</a></li>
+      <li><a class = "nav-bar" href = "{{ url_for('about') }}">About us</a></li>
+      <li><a class = "nav-bar" href = "{{ url_for('about_pet') }}">Know about your pet</a></li>
+      <li><a class = "nav-bar" href = "{{ url_for('why_adoption') }}">Why pet adoption</a></li>
+      <li><a class = "nav-bar" href = "{{ url_for('register') }}">Register with us</a></li>
+      <li><a class = "nav-bar" href = "{{ url_for('login_user') }}">User Login</a></li>
+      <li><a class = "nav-bar" href = "{{ url_for('login_admin') }}">Admin</a></li>
+      <li class = "ritem"><a class = 'nav-bar' href = "{{ url_for('logout_admin') }}">Logout</a></li>
+      <li class = "ritem"><a class = 'nav-bar' href = "{{ url_for('iamadmin') }}">{{ name }}</a></li>
+    </ul>
+   <div>
+      <h1>Enter New Vet</h1>
+      <p>Please fill in this form add the new vet.</p>
+      <hr>
+      <form action = "" method = 'post'>
+        {{ form.hidden_tag() }}
+        <p>
+          <b>{{ form.name.label }}</b><br>
+          {{ form.name(class_ = 'inpfield', placeholder = 'Enter name') }}<br>
+          {% for error in form.name.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}
+        </p>
+        <p>
+          <b>{{ form.address.label }}</b><br>
+          {{ form.address(class_ = 'inpfield', placeholder = 'Enter address in this format (Street# locality, place, state)') }}<br>
+          {% for error in form.address.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}
+        </p>
+        <p>
+          <b>{{ form.gender.label }}</b><br><br>
+          {% for subfield in form.gender %}
+            {{ subfield }}
+            {{ subfield.label }}<br><br>
+          {% endfor %}
+          {% for error in form.gender.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}
+        </p>
+        <p>
+          <b>{{ form.pnumber.label }}</b><br>
+          {{ form.pnumber(class_ = 'inpfield', placeholder = 'Enter Phone number') }}<br>
+          {% for error in form.pnumber.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}
+        </p>
+        <p>
+          {{ form.submit(class_ = 'sbfield') }}
+        </p>
+      </form>
+    </div>
+  </body>
+</html>

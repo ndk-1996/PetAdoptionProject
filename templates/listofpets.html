@@ -1,0 +1,83 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Adopt</title>
+    {% endif %}
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = 'allstyle.css') }}">
+  </head>
+  <body class="formlogin">
+    <ul class="ulist">
+      <li><a class = 'nav-bar' href = "{{ url_for('home') }}">Home</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('about') }}">About us</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('about_pet') }}">Know about your pet</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('why_adoption') }}">Why pet adoption</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('register') }}">Register with us</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('login_user') }}">User Login</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('login_admin') }}">Admin</a></li>
+      <li class = "ritem"><a class = 'nav-bar' href = "{{ url_for('logout_user') }}">Logout</a></li>
+      <li class = "ritem"><a class = 'nav-bar' href = "{{ url_for('per_info') }}">{{ name }}</a></li>
+    </ul>
+    <p>
+      <br><b>List of available pets.</b><br><br>
+      {% for val in id %}
+         {{ val[0] }}<br><br>
+      {% endfor %}
+    </p><br>
+    <div>
+      <h1>Fill the form to see more details about the pet</h1>
+      <hr>
+    <form action = "" method  = 'post'>
+      {{ form.hidden_tag() }}
+      <p>
+        <b>{{ form.petid.label }}</b><br>
+        {{ form.petid(class_ = 'inpfield', placeholder = 'Enter valid petid') }}<br>
+        {% for error in form.petid.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+      </p>
+      <p>
+        {{ form.submit(class_ = 'sbfield') }}
+      </p>
+      <br><br>
+      <p>
+        {% if msg %}
+          <span style="color: red;">{{ msg }}</span>
+        {% endif %}
+      </p>
+    </form>
+  </div>
+  <br><br><br><br><br><br><br>
+  {% if data %}
+    <img src = '{{ data[0][6] }}' class = 'center'>
+    <br><br>
+    <p align = 'center'><b>PET DETAILS</b><p>
+    <p align = 'center'><b>Pet id : </b>{{ data[0][0] }}</p>
+    <p align = 'center'><b>Pet Name : </b>{{ data[0][1] }}</p>
+    <p align = 'center'><b>Pet Gender : </b>{{ data[0][2] }}</p>
+    <p align = 'center'><b>Breed : </b>{{ data[0][4] }}</p>
+    <p align = 'center'><b>Donation Date : </b>{{ data[0][5] }}</p>
+    <p align = 'center'><b>Breed cost : </b>{{ data[0][7] }}</p>
+    <p align = 'center'><b>Country of origin : </b>{{ data[0][8] }}</p>
+    <br><br>
+    <p align = 'center'><b>DONATER DETAILS</b><p>
+    <p align = 'center'><b>Donated_by : </b>{{ data[0][3] }}</p>
+    <p align = 'center'><b>Name : </b>{{ data[0][9] }}</p>
+    <p align = 'center'><b>Address : </b>{{ data[0][10] }}</p>
+    <p align = 'center'><b>Phonenumber : </b>{{ data[0][11] }}</p>
+    <p align = 'center'><b>Gender : </b>{{ data[0][12] }}</p>
+    <br><br>
+    <p align = 'center'><b>VET DETAILS</b><p>
+    <p align = 'center'><b>Name : </b>{{ data[0][13] }}</p>
+    <p align = 'center'><b>Address : </b>{{ data[0][14] }}</p>
+    <p align = 'center'><b>Phonenumber : </b>{{ data[0][15] }}</p>
+    <p align = 'center'><b>Gender : </b>{{ data[0][16] }}</p>
+    <br><br>
+    <p align = 'center'><b>SHELTER DETAILS</b><p>
+    <p align = 'center'><b>Shelter Name : </b>{{ data[0][17] }}</p>
+    <p align = 'center'><b>Address : </b>{{ data[0][18] }}</p>
+    <p align = 'center'><b>Phonenumber : </b>{{ data[0][19] }}</p>
+  {% endif %}
+  </body>
+</html>

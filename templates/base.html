@@ -1,0 +1,29 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Adopt a pet</title>
+    {% endif %}
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = 'allstyle.css') }}">
+  </head>
+  <body class="formlogin">
+    <ul class="ulist">
+      <li><a class = 'nav-bar' href = "{{ url_for('home') }}">Home</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('about') }}">About us</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('about_pet') }}">Know about your pet</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('why_adoption') }}">Why pet adoption</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('register') }}">Register with us</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('login_user') }}">User Login</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('login_admin') }}">Admin</a></li>
+    </ul>
+    <br><br><br><br><br>
+    <p class = "hometext"><b>1. Hundreds of pets are abandoned and rescued in India everyday.</b></p><br>
+    <p class = "hometext"><b>2. Although there are many wonderful souls across the nation who work extra hours and put in efforts beyond their capacity.</b></p><br>
+    <p class = "hometext"><b>3. There is always a shortage of funding and communication across the animal activist circuit.</b></p><br>
+    <p class = "hometext"><b>4. Keeping this issue in mind, we have launched the Adoption section at petadoption.in .</b></p><br>
+    <p class = "hometext"><b>5. This pan-India portal aims to establish a database of pet animals pets that are available in many cities and others across the country.</b></p><br>
+    <p class = "hometext"><b>6. We are here to not just display these pets but assist in the process by having a streamlined process in place which includes filling up of the form as well as mediating between the two parties, namely the current foster/shelter of the pet and the potential adopting entity.</b></p><br>
+    <p class = "hometext"><b>7. Our ultimate goal is to reduce pets over-population by providing loving homes for all the homeless pets , and at the same time helping every human share their lives with a furry companion that they so dearly want.</b></p><br>
+  </body>
+</html>

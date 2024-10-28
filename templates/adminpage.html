@@ -1,0 +1,27 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Adminpage</title>
+    {% endif %}
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = 'allstyle.css') }}">
+  </head>
+  <body class="formlogin">
+    <ul class="ulist">
+      <li><a class = 'nav-bar' href = "{{ url_for('home') }}">Home</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('about') }}">About us</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('about_pet') }}">Know about your pet</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('why_adoption') }}">Why pet adoption</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('register') }}">Register with us</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('login_user') }}">User Login</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('login_admin') }}">Admin</a></li>
+      <li class = "ritem"><a class = 'nav-bar' href = "{{ url_for('logout_admin') }}">Logout</a></li>
+      <li class = "ritem"><a class = 'nav-bar' href = "{{ url_for('iamadmin') }}">{{ name }}</a></li>
+    </ul>
+    <br><br><br><br>
+    <p align = 'center'><a class = 'breed' href = "{{ url_for('add_breed') }}">AddBreed</a></p>
+    <p align = 'center'><a class = 'vet' href = "{{ url_for('add_vet') }}">AddVet</a></p>
+    <p align = 'center'><a class = 'shelter' href = "{{ url_for('add_shelter') }}">AddShelter</a></p>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+
+
+Make a export DB Mysqldump in a sql file and copy the sql file to USB card and import it into the other machine.Follow the steps it would help you to achieve it
+
+To make mysql dump for reference see here Sample:
+
+mysqldump -u admin -p passwd DB_Name > file/path/filename.sql
+
+import the sql file to the mysql DB as
+
+sample :
+
+  mysql > use DB_Name;
+  mysql >source yourfile.sql
+
+(or)
+
+  mysql -u USERNAME -p PASSWORD DATABASE-NAME < file/path/filename.sql
+
+Correct me if 'm wrong
+

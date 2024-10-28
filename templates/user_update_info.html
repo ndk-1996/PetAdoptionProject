@@ -1,0 +1,31 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>User_info</title>
+    {% endif %}
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = 'allstyle.css') }}">
+  </head>
+  <body class="formlogin">
+    <ul class="ulist">
+      <li><a class = 'nav-bar' href = "{{ url_for('home') }}">Home</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('about') }}">About us</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('about_pet') }}">Know about your pet</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('why_adoption') }}">Why pet adoption</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('register') }}">Register with us</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('login_user') }}">User Login</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('login_admin') }}">Admin</a></li>
+      <li class = "ritem"><a class = 'nav-bar' href = "{{ url_for('logout_user') }}">Logout</a></li>
+    </ul>
+    <br><br>
+    <p><b>Current User id : </b>{{ data[0] }}</p>
+    <p><b>Name : </b>{{ data[1] }}</p>
+    <p><b>Password : </b>{{ data[2] }}</p>
+    <p><b>Address : </b>{{ data[3] }}</p>
+    <p><b>Phonenumber : </b>{{ data[4] }}</p>
+    <p><b>Gender : </b>{{ data[5] }}</p>
+    <p><b>Date of joining : </b>{{ data[6] }}</p>
+    <br><br>
+  </body>
+</html>

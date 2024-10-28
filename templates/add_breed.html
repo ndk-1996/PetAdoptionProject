@@ -1,0 +1,55 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Add breed</title>
+    {% endif %}
+    <link rel = 'stylesheet' href = "{{ url_for('static', filename = 'allstyle.css') }}">
+  </head>
+  <body class = "formlogin" >
+    <ul class = "ulist">
+      <li><a class = "nav-bar" href = "{{ url_for('home') }}">Home</a></li>
+      <li><a class = "nav-bar" href = "{{ url_for('about') }}">About us</a></li>
+      <li><a class = "nav-bar" href = "{{ url_for('about_pet') }}">Know about your pet</a></li>
+      <li><a class = "nav-bar" href = "{{ url_for('why_adoption') }}">Why pet adoption</a></li>
+      <li><a class = "nav-bar" href = "{{ url_for('register') }}">Register with us</a></li>
+      <li><a class = "nav-bar" href = "{{ url_for('login_user') }}">User Login</a></li>
+      <li><a class = "nav-bar" href = "{{ url_for('login_admin') }}">Admin</a></li>
+      <li class = "ritem"><a class = 'nav-bar' href = "{{ url_for('logout_admin') }}">Logout</a></li>
+      <li class = "ritem"><a class = 'nav-bar' href = "{{ url_for('iamadmin') }}">{{ name }}</a></li>
+    </ul>
+   <div>
+      <h1>Enter New Breed</h1>
+      <p>Please fill in this form add the new breed.</p>
+      <hr>
+      <form action = "" method = 'post'>
+        {{ form.hidden_tag() }}
+        <p>
+          <b>{{ form.breedname.label }}</b><br>
+          {{ form.breedname(class_ = 'inpfield', placeholder = 'Enter breedname') }}<br>
+          {% for error in form.breedname.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}
+        </p>
+        <p>
+          <b>{{ form.breedcost.label }}</b><br>
+          {{ form.breedcost(class_ = 'inpfield', placeholder = 'Enter the breedcost in INR') }}<br>
+          {% for error in form.breedcost.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}
+        </p>
+        <p>
+          <b>{{ form.country_of_origin.label }}</b><br>
+          {{ form.country_of_origin(class_ = 'inpfield', placeholder = 'Enter country of origin') }}<br>
+          {% for error in form.country_of_origin.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}
+        </p>
+        <p>
+          {{ form.submit(class_ = 'sbfield') }}
+        </p>
+      </form>
+    </div>
+  </body>
+</html>

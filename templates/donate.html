@@ -1,0 +1,103 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Donate</title>
+    {% endif %}
+    <link rel = 'stylesheet' href = "{{ url_for('static', filename = 'allstyle.css') }}">
+  </head>
+  <body class = "formlogin" >
+    <ul class = "ulist">
+      <li><a class = "nav-bar" href = "{{ url_for('home') }}">Home</a></li>
+      <li><a class = "nav-bar" href = "{{ url_for('about') }}">About us</a></li>
+      <li><a class = "nav-bar" href = "{{ url_for('about_pet') }}">Know about your pet</a></li>
+      <li><a class = "nav-bar" href = "{{ url_for('why_adoption') }}">Why pet adoption</a></li>
+      <li><a class = "nav-bar" href = "{{ url_for('register') }}">Register with us</a></li>
+      <li><a class = "nav-bar" href = "{{ url_for('login_user') }}">User Login</a></li>
+      <li><a class = "nav-bar" href = "{{ url_for('login_admin') }}">Admin</a></li>
+      <li class = "ritem"><a class = 'nav-bar' href = "{{ url_for('logout_user') }}">Logout</a></li>
+      <li class = "ritem"><a class = 'nav-bar' href = "{{ url_for('per_info') }}">{{ name }}</a></li>
+    </ul>
+    <p>
+      <br><b>Please read this carefully, You can only donate pets if its breed belongs to the below list.</b><br><br>
+      {% for bname in data %}
+         {{ bname[0] }}<br><br>
+      {% endfor %}
+    </p><br><br><br>
+   <div>
+      <h1>Fill the form to donate</h1>
+      <p>Please fill the breedname field from the above available list of breednames.</p>
+      <hr>
+      <form action = "" method = 'post' enctype = "multipart/form-data">
+        {{ form.hidden_tag() }}
+        <p>
+          <b>{{ form.name.label }}</b><br>
+          {{ form.name(class_ = 'inpfield', placeholder = 'Enter full name') }}<br>
+          {% for error in form.name.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}
+        </p>
+        <p>
+          <b>{{ form.gender.label }}</b><br><br>
+          {% for subfield in form.gender %}
+            {{ subfield }}
+            {{ subfield.label }}<br><br>
+          {% endfor %}
+          {% for error in form.gender.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}
+        </p>
+        <p>
+          <b>{{ form.pettype.label }}</b><br><br>
+          {% for subfield in form.pettype %}
+            {{ subfield }}
+            {{ subfield.label }}<br><br>
+          {% endfor %}
+          {% for error in form.pettype.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}
+        </p>
+        <p>
+          <b>{{ form.breedname.label }}</b><br>
+          {{ form.breedname(class_ = 'inpfield', placeholder = 'Enter breed') }}<br>
+          {% for error in form.breedname.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}
+        </p>
+        <p>
+          <b>{{ form.height.label }}</b><br>
+          {{ form.height(class_ = 'inpfield', placeholder = 'Enter height') }}<br>
+          {% for error in form.height.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}
+        </p>
+        <p>
+          <b>{{ form.weight.label }}</b><br>
+          {{ form.weight(class_ = 'inpfield', placeholder = 'Enter weight') }}<br>
+          {% for error in form.weight.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}
+        </p>
+        <p>
+          <b>{{ form.date.label }}</b><br>
+          {{ form.date(class_ = 'inpfield', placeholder = 'Enter date') }}<br>
+          {% for error in form.date.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}
+        </p>
+        <p>
+          <b>Upload images of the pet</b><br><br>
+          <input type = "file" name = "file"/><br><br>
+          {% if msg %}
+          <span style="color: red;">[{{ msg }}]</span>
+          {% endif %}
+          <br><br>
+        </p>
+        <p>
+          {{ form.submit(class_ = 'sbfield') }}
+        </p>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Pet Information</title>
+    {% endif %}
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = 'allstyle.css') }}">
+  </head>
+  <body class="formlogin">
+    <ul class="ulist">
+      <li><a class = 'nav-bar' href = "{{ url_for('home') }}">Home</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('about') }}">About us</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('about_pet') }}">Know about your pet</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('why_adoption') }}">Why pet adoption</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('register') }}">Register with us</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('login_user') }}">User Login</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('login_admin') }}">Admin</a></li>
+      <li class = "ritem"><a class = 'nav-bar' href = "{{ url_for('logout_user') }}">Logout</a></li>
+      <li class = "ritem"><a class = 'nav-bar' href = "{{ url_for('per_info') }}">{{ name }}</a></li>
+    </ul>
+    <br><br><br><br>
+    <img src = '{{ data[0][6] }}' class = 'center'>
+    <br><br>
+    <p align = 'center'><b>PET DETAILS</b><p><br>
+    <p align = 'center'><b>Pet id : </b>{{ data[0][0] }}</p>
+    <p align = 'center'><b>Pet Name : </b>{{ data[0][1] }}</p>
+    <p align = 'center'><b>Pet Type : </b>{{ data[0][2] }}</p>
+    <p align = 'center'><b>Pet Gender : </b>{{ data[0][3] }}</p>
+    <p align = 'center'><b>Breed : </b>{{ data[0][9] }}</p>
+    <p align = 'center'><b>Donation Date : </b>{{ data[0][5] }}</p>
+    <p align = 'center'><b>Breed cost : </b>{{ data[0][10] }} INR</p>
+    <p align = 'center'><b>Country of origin : </b>{{ data[0][11] }}</p>
+    <p align = 'center'><b>Height : </b>{{ data[0][7] }} cms</p>
+    <p align = 'center'><b>Weight : </b>{{ data[0][8] }} kg</p>
+    <br><br>
+    <p align = 'center'><b>DONATER DETAILS</b><p><br>
+    <p align = 'center'><b>Donated_by : </b>{{ data[0][4] }}</p>
+    <p align = 'center'><b>Name : </b>{{ data[0][19] }}</p>
+    <p align = 'center'><b>Address : </b>{{ data[0][20] }}</p>
+    <p align = 'center'><b>Phonenumber : </b>{{ data[0][21] }}</p>
+    <p align = 'center'><b>Gender : </b>{{ data[0][22] }}</p>
+    <br><br>
+    <p align = 'center'><b>VET DETAILS</b><p><br>
+    <p align = 'center'><b>Name : </b>{{ data[0][12] }}</p>
+    <p align = 'center'><b>Address : </b>{{ data[0][13] }}</p>
+    <p align = 'center'><b>Phonenumber : </b>{{ data[0][14] }}</p>
+    <p align = 'center'><b>Gender : </b>{{ data[0][15] }}</p>
+    <br><br>
+    <p align = 'center'><b>SHELTER DETAILS</b><p><br>
+    <p align = 'center'><b>Shelter Name : </b>{{ data[0][16] }}</p>
+    <p align = 'center'><b>Address : </b>{{ data[0][17] }}</p>
+    <p align = 'center'><b>Phonenumber : </b>{{ data[0][18] }}</p>
+    <br><br><br><br><br>
+  <div>
+    <h1>Please enter date.</h1>
+    <hr>
+    <form action = "" method = 'post'>
+      {{ form.hidden_tag() }}
+      <p>
+        <b>{{ form.date.label }}</b><br>
+        {{ form.date(class_ = 'inpfield', placeholder = 'Enter date') }}<br>
+        {% for error in form.date.errors %}
+        <span style = "color: red;">[{{ error }}]</span>
+        {% endfor %}
+      </p>
+      <p>
+        {{ form.submit(class_ = 'sbfield') }}
+      </p>
+    </form>
+  </div>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Userpage</title>
+    {% endif %}
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = 'allstyle.css') }}">
+  </head>
+  <body class="formlogin">
+    <ul class="ulist">
+      <li><a class = 'nav-bar' href = "{{ url_for('home') }}">Home</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('about') }}">About us</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('about_pet') }}">Know about your pet</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('why_adoption') }}">Why pet adoption</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('register') }}">Register with us</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('login_user') }}">User Login</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('login_admin') }}">Admin</a></li>
+      <li class = "ritem"><a class = 'nav-bar' href = "{{ url_for('logout_user') }}">Logout</a></li>
+      <li class = "ritem"><a class = 'nav-bar' href = "{{ url_for('per_info') }}">{{ name }}</a></li>
+    </ul>
+    <br><br>
+    <p>Read the following carefully before adopting a pet.</p>
+    <p><b> 1. </b>You should do some research about the pet you are gonna adopt.</p>
+    <p><b> 2. </b>Can You Commit?</p>
+    <p><b> 3. </b>Will Your Pet Fit Your Lifestyle?</p>
+    <p><b> 4. </b>Determine the Best Dog for Your Family</p>
+    <p><b> 5. </b>Interview Veterinarians Before the Adoption</p>
+    <p><b> 6. </b>Make Your Home Pet-Friendly</p>
+    <p><b> 7. </b>Choose an Age and Breed Appropriate Food</p>
+    <br><br><br><br><br>
+    <a class = "adopt" href = "{{ url_for('adopt') }}">Adopt</a>
+    <a class = "donate" href = "{{ url_for('donate') }}">Donate</a>
+    <br><br>
+  </body>
+</html>

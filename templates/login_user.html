@@ -1,0 +1,55 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Login</title>
+    {% endif %}
+  </head>
+  <link rel = 'stylesheet' href = "{{ url_for('static', filename = 'allstyle.css') }}">
+  <body class = "formlogin">
+    <ul class="ulist">
+      <li><a class = 'nav-bar' href = "{{ url_for('home') }}">Home</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('about') }}">About us</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('about_pet') }}">Know about your pet</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('why_adoption') }}">Why pet adoption</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('register') }}">Register with us</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('login_user') }}">User Login</a></li>
+      <li><a class = 'nav-bar' href = "{{ url_for('login_admin') }}">Admin</a></li>
+    </ul>
+    <div>
+      <h1>User Login</h1>
+      <p>Please enter valid credentials to access your account.</p>
+      <hr>
+      <form action = "" method = 'post'>
+        {{ form.hidden_tag() }}
+        <p>
+          <b>{{ form.username.label }}</b><br>
+          {{ form.username(class_ = 'inpfield', placeholder = 'Enter username') }}<br>
+          {% for error in form.username.errors %}
+          <span style = "color: red;">[{{ error }}]</span>
+          {% endfor %}
+        </p>
+        <p>
+          <b>{{ form.password.label }}</b><br>
+          {{ form.password(class_ = 'inpfield', placeholder = 'Enter password') }}<br>
+          {% for error in form.password.errors %}
+          <span style = "color: red;">[{{ error }}]</span>
+          {% endfor %}
+        </p>
+        <p>
+          {{ form.remember_me() }}
+          {{ form.remember_me.label }}<br>
+        </p>
+        <p>
+          {% if invcred %}
+          <br><br><span style = "color: red;">{{ invcred }}</span><br><br>
+          {% endif %}
+        </p>
+        <p>
+          {{ form.submit(class_ = 'sbfield') }}
+        </p>
+      </div>
+    </form>
+  </body>
+</html>
